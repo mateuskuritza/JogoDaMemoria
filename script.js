@@ -35,10 +35,10 @@ function adicionarCartas(){
 
         containerCartas.innerHTML+=`
         <div class="carta-selecionada" onclick="virarCarta(this);">
-            <div class="carta-virada none">
+            <div class="carta-virada">
                 <img src=${cartas[i]} alt="Parrot da carta virada">
             </div>
-            <div class="carta">
+            <div class="carta ativo">
                 <img src="imgs/front.png" alt="Parrot atrás da carta">
             </div>
         </div>
@@ -49,9 +49,14 @@ function adicionarCartas(){
 
 function virarCarta(element){
 
+
+    inverterCarta(element);
+
+}
+
+function inverterCarta(element){
     const cartaFrente = element.querySelector(".carta-virada");
     const cartaVerso = element.querySelector(".carta");
-    
-    cartaFrente.classList.toggle("none");
-    cartaVerso.classList.toggle("none");
+    cartaFrente.classList.toggle("ativo");
+    cartaVerso.classList.toggle("ativo");
 }

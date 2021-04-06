@@ -29,12 +29,18 @@ h1{
     align-items: center;
     justify-content: center;
     margin: 34px;
+    display: none;
 }
 
 img{
     width: 100px;
 }
 
-.none{
-    display: none;
+.ativo{
+    display: flex;
+}
+
+.ativo-permanente{
+    display: flex;
+    z-index: 10;
 }
