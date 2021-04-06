@@ -52,8 +52,9 @@ function virarCarta(element){
 
     inverterCarta(element);
 
+    let cartasSelecionadas = document.querySelectorAll(".carta-virada.ativo").length
 
-    if(document.querySelectorAll(".carta-virada.ativo").length==2){
+    if( cartasSelecionadas == 2){
         if(element.innerHTML == cartaAnterior.innerHTML){
             const deixarVirada = element.querySelector(".carta-virada");
             const deixarViradaAntiga = cartaAnterior.querySelector(".carta-virada");
@@ -74,8 +75,13 @@ function virarCarta(element){
 }
 
 function inverterCarta(element){
-    const cartaFrente = element.querySelector(".carta-virada");
-    const cartaVerso = element.querySelector(".carta");
-    cartaFrente.classList.toggle("ativo");
-    cartaVerso.classList.toggle("ativo");
+
+    // if para não inverter as já "acertadas"
+    if (element.querySelector(".ativo-permanente") == undefined){
+        const cartaFrente = element.querySelector(".carta-virada");
+        const cartaVerso = element.querySelector(".carta");
+        cartaFrente.classList.toggle("ativo");
+        cartaVerso.classList.toggle("ativo");
+    }
+
 }
