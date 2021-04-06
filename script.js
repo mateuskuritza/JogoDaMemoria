@@ -1,13 +1,14 @@
 const srcImgs = ["imgs/bobrossparrot.gif","imgs/explodyparrot.gif","imgs/fiestaparrot.gif","imgs/metalparrot.gif","imgs/revertitparrot.gif","imgs/tripletsparrot.gif","imgs/unicornparrot.gif"];
 const containerCartas = document.querySelector(".container-cartas");
+cartaAnterior = 0;
 
 quantasCartas();
 
 function quantasCartas(){
-    let numeroCartas = prompt("Qual o número de cartas? Precisa ser um número par para iniciar o jogo!");
+    let numeroCartas = prompt("Qual o número de cartas? Número par de 4 a 14");
 
-    while(numeroCartas%2!=0 | numeroCartas>14){
-        numeroCartas = prompt("Qual o número de cartas? Número par menor que 15");
+    while(numeroCartas%2!=0 | numeroCartas>14 | numeroCartas<4){
+        numeroCartas = prompt("Qual o número de cartas? Número par de 4 a 14");
     }
 
     pegarBaralho(numeroCartas);
@@ -49,8 +50,26 @@ function adicionarCartas(){
 
 function virarCarta(element){
 
-
     inverterCarta(element);
+
+
+    if(document.querySelectorAll(".carta-virada.ativo").length==2){
+        if(element.innerHTML == cartaAnterior.innerHTML){
+            const deixarVirada = element.querySelector(".carta-virada");
+            const deixarViradaAntiga = cartaAnterior.querySelector(".carta-virada");
+            deixarVirada.classList.add("ativo-permanente");
+            deixarViradaAntiga.classList.add("ativo-permanente");
+            deixarVirada.classList.remove("ativo");
+            deixarViradaAntiga.classList.remove("ativo");
+        }else{
+            inverterCarta(element);
+            inverterCarta(cartaAnterior);
+        }
+        cartaAnterior=0;
+    }
+
+
+    cartaAnterior = element;
 
 }
 
