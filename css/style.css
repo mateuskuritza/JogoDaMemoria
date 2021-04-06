@@ -34,3 +34,7 @@ h1{
 img{
     width: 100px;
 }
+
+.none{
+    display: none;
+}
