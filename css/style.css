@@ -19,7 +19,7 @@ h1{
     justify-content: space-around;
 }
 
-.carta{
+.carta, .carta-virada{
     width: 117px;
     height: 146px;
     background: #A7E9AF;
