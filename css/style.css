@@ -1,0 +1,36 @@
+body{
+    background: #EEF9BF;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1{
+    font-weight: 700;
+    font-size: 56px;
+    color: #75B79E;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.container-cartas{
+    margin: 13px auto 0 auto;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.carta{
+    width: 117px;
+    height: 146px;
+    background: #A7E9AF;
+    border: 1px solid #99CEA8;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 34px;
+}
+
+img{
+    width: 100px;
+}
