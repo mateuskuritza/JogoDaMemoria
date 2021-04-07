@@ -3,7 +3,7 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
-h1{
+h1,strong{
     font-weight: 700;
     font-size: 56px;
     color: #75B79E;
@@ -58,4 +58,12 @@ img{
 
 .carta-frente{
     transform: rotateY(180deg);
+}
+
+/* cronometro */
+.barra-topo{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid #99CEA8;
 }
