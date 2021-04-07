@@ -1,16 +1,28 @@
 const srcImgs = ["imgs/bobrossparrot.gif","imgs/explodyparrot.gif","imgs/fiestaparrot.gif","imgs/metalparrot.gif","imgs/revertitparrot.gif","imgs/tripletsparrot.gif","imgs/unicornparrot.gif"];
 const containerCartas = document.querySelector(".container-cartas");
-quantasCartas();
+const cronometro = document.querySelector(".cronometro");
 cartaVirando = false;
+quantasCartas();
+iniciarCronometro();
+
+function iniciarCronometro(){
+    setInterval( ()=> {
+        if(acertos!==numeroCartas){
+            cronometro.innerHTML = segundosPassados;
+            segundosPassados++;
+        }
+    },1000);
+}
 
 function quantasCartas(){
     jogadas = 0;
     acertos = 0;
+    segundosPassados = 0;
     numeroCartas = prompt("Qual o número de cartas? Número par de 4 a 14");
     while(numeroCartas%2!=0 | numeroCartas>14 | numeroCartas<4){
         numeroCartas = prompt("Qual o número de cartas? Número par de 4 a 14");
     }
-
+    segundosInicio = segundosPassados;
     pegarBaralho(numeroCartas);
 }
 
@@ -74,9 +86,11 @@ function virarCarta(element){
         }
 
         if(acertos == numeroCartas){
-            alert(`Você ganhou em ${jogadas} jogadas!`)
+            segundosFim = segundosPassados;
+            tempoDeJogo = segundosFim - segundosInicio - 1;
+            alert(`Você ganhou em ${jogadas} jogadas com ${tempoDeJogo} segundos!`);
             containerCartas.innerHTML= null;
-            const pergunta = prompt("Quer jogar mais uma vez? Se quer, digite sim")
+            const pergunta = prompt("Quer jogar mais uma vez? Se quer, digite sim");
             if(pergunta == "sim"){
                 quantasCartas();
             }else{
@@ -84,6 +98,7 @@ function virarCarta(element){
             }
         }
 
+        // esperar a carta terminar de virar antes de poder virar outra
         setTimeout(() => { cartaVirando = false;},1000);
 
     }
