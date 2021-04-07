@@ -1,7 +1,7 @@
 const srcImgs = ["imgs/bobrossparrot.gif","imgs/explodyparrot.gif","imgs/fiestaparrot.gif","imgs/metalparrot.gif","imgs/revertitparrot.gif","imgs/tripletsparrot.gif","imgs/unicornparrot.gif"];
 const containerCartas = document.querySelector(".container-cartas");
 quantasCartas();
-
+cartaVirando = false;
 
 function quantasCartas(){
     jogadas = 0;
@@ -50,9 +50,10 @@ function adicionarCartas(){
 
 
 function virarCarta(element){
-    if(element.querySelector(".carta-acertada") == undefined){
+    if(element.querySelector(".carta-acertada") == undefined && cartaVirando == false){
         jogadas++;
         virarCima(element);
+        cartaVirando = true;
 
         const cartasViradas = document.querySelectorAll(".carta-frente.virado");
 
@@ -63,13 +64,12 @@ function virarCarta(element){
                     cartasViradas[i].classList.remove("virado");
                 }
                 acertos+=2;
-            }else{
+            } else{
                 setTimeout(function(){
                     for(let i=0; i<2; i++){
                         virarBaixo(cartasViradas[i].parentNode);
                     }
                 }, 1000);
-                
             }
         }
 
@@ -83,6 +83,9 @@ function virarCarta(element){
                 alert("Até a próxima!");
             }
         }
+
+        setTimeout(() => { cartaVirando = false;},1000);
+
     }
 }
 
