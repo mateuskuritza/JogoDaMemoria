@@ -36,10 +36,10 @@ function adicionarCartas(){
 
         containerCartas.innerHTML+=`
         <div class="carta-selecionada" onclick="virarCarta(this);">
-            <div class="carta-virada">
+            <div class="carta-frente">
                 <img src=${cartas[i]} alt="Parrot da carta virada">
             </div>
-            <div class="carta ativo">
+            <div class="carta-verso virado">
                 <img src="imgs/front.png" alt="Parrot atrás da carta">
             </div>
         </div>
@@ -52,16 +52,16 @@ function virarCarta(element){
     
     inverterCarta(element);
 
-    let cartasSelecionadas = document.querySelectorAll(".carta-virada.ativo").length
+    let cartasSelecionadas = document.querySelectorAll(".carta-frente.virado").length
 
     if( cartasSelecionadas == 2){
         if(element.innerHTML == cartaAnterior.innerHTML){
-            const deixarVirada = element.querySelector(".carta-virada");
-            const deixarViradaAntiga = cartaAnterior.querySelector(".carta-virada");
-            deixarVirada.classList.add("ativo-permanente");
-            deixarViradaAntiga.classList.add("ativo-permanente");
-            deixarVirada.classList.remove("ativo");
-            deixarViradaAntiga.classList.remove("ativo");
+            const deixarVirada = element.querySelector(".carta-frente");
+            const deixarViradaAntiga = cartaAnterior.querySelector(".carta-frente");
+            deixarVirada.classList.add("virado-permanente");
+            deixarViradaAntiga.classList.add("virado-permanente");
+            deixarVirada.classList.remove("virado");
+            deixarViradaAntiga.classList.remove("virado");
         }else{
             // adicionar o tempo aqui
             inverterCarta(element);
@@ -81,11 +81,11 @@ function esperarVirar(primeira,segunda){
 function inverterCarta(element){
 
     // if para não inverter as já "acertadas"
-    if (element.querySelector(".ativo-permanente") == undefined){
-        const cartaFrente = element.querySelector(".carta-virada");
-        const cartaVerso = element.querySelector(".carta");
-        cartaFrente.classList.toggle("ativo");
-        cartaVerso.classList.toggle("ativo");
+    if (element.querySelector(".virado-permanente") == undefined){
+        const cartaFrente = element.querySelector(".carta-frente");
+        const cartaVerso = element.querySelector(".carta-verso");
+        cartaFrente.classList.toggle("virado");
+        cartaVerso.classList.toggle("virado");
     }
 
 }

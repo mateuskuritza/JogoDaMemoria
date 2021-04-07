@@ -19,7 +19,7 @@ h1{
     justify-content: space-around;
 }
 
-.carta, .carta-virada{
+.carta-verso, .carta-frente{
     width: 117px;
     height: 146px;
     background: #A7E9AF;
@@ -32,15 +32,17 @@ h1{
     display: none;
 }
 
+
+
 img{
     width: 100px;
 }
 
-.ativo{
+.virado{
     display: flex;
 }
 
-.ativo-permanente{
+.virado-permanente{
     display: flex;
     z-index: 10;
 }
