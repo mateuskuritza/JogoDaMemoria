@@ -49,7 +49,7 @@ function adicionarCartas(){
 }
 
 function virarCarta(element){
-
+    
     inverterCarta(element);
 
     let cartasSelecionadas = document.querySelectorAll(".carta-virada.ativo").length
@@ -63,6 +63,7 @@ function virarCarta(element){
             deixarVirada.classList.remove("ativo");
             deixarViradaAntiga.classList.remove("ativo");
         }else{
+            // adicionar o tempo aqui
             inverterCarta(element);
             inverterCarta(cartaAnterior);
         }
@@ -74,6 +75,9 @@ function virarCarta(element){
 
 }
 
+function esperarVirar(primeira,segunda){
+    
+}
 function inverterCarta(element){
 
     // if para não inverter as já "acertadas"
