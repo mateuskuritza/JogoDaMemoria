@@ -58,15 +58,18 @@ function virarCarta(element){
 
         if(cartasViradas.length == 2){
             if(cartasViradas[0].innerHTML == cartasViradas[1].innerHTML){
-                cartasViradas[0].classList.add("carta-acertada");
-                cartasViradas[1].classList.add("carta-acertada");
-                cartasViradas[0].classList.remove("virado");
-                cartasViradas[1].classList.remove("virado");
+                for(let i=0; i<2; i++){
+                    cartasViradas[i].classList.add("carta-acertada");
+                    cartasViradas[i].classList.remove("virado");
+                }
                 acertos+=2;
             }else{
-                virarBaixo(cartasViradas[0].parentNode);
-                virarBaixo(cartasViradas[1].parentNode);
+                // aqui precisa esperar
+                for(let i=0; i<2; i++){
+                    virarBaixo(cartasViradas[i].parentNode);
+                }
             }
+            
         }
 
         if(acertos == numeroCartas){
