@@ -4,9 +4,10 @@ quantasCartas();
 
 
 function quantasCartas(){
+    jogadas = 0;
     acertos = 0;
     numeroCartas = prompt("Qual o número de cartas? Número par de 4 a 14");
-
+    containerCartas.innerHTML= null;
     while(numeroCartas%2!=0 | numeroCartas>14 | numeroCartas<4){
         numeroCartas = prompt("Qual o número de cartas? Número par de 4 a 14");
     }
@@ -51,7 +52,7 @@ function adicionarCartas(){
 function virarCarta(element){
 
     if(element.querySelector(".carta-acertada") == undefined){
-
+        jogadas++;
         virarCima(element);
 
         const cartasViradas = document.querySelectorAll(".carta-frente.virado");
@@ -62,14 +63,19 @@ function virarCarta(element){
                 cartasViradas[1].classList.add("carta-acertada");
                 cartasViradas[0].classList.remove("virado");
                 cartasViradas[1].classList.remove("virado");
-                acertos++;
+                acertos+=2;
             }else{
                 virarBaixo(cartasViradas[0].parentNode);
                 virarBaixo(cartasViradas[1].parentNode);
             }
         }
 
-        console.log(acertos);
+        if(acertos == numeroCartas){
+            alert(`Você ganhou em ${jogadas} jogadas!`)
+            if(prompt("Quer jogar mais uma vez? Se quer, digite sim") == "sim"){
+                quantasCartas();
+            }
+        }
     }
 }
 
