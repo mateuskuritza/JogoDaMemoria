@@ -1,11 +1,11 @@
 const srcImgs = ["imgs/bobrossparrot.gif","imgs/explodyparrot.gif","imgs/fiestaparrot.gif","imgs/metalparrot.gif","imgs/revertitparrot.gif","imgs/tripletsparrot.gif","imgs/unicornparrot.gif"];
 const containerCartas = document.querySelector(".container-cartas");
-cartaAnterior = 0;
-
 quantasCartas();
 
+
 function quantasCartas(){
-    let numeroCartas = prompt("Qual o número de cartas? Número par de 4 a 14");
+    acertos = 0;
+    numeroCartas = prompt("Qual o número de cartas? Número par de 4 a 14");
 
     while(numeroCartas%2!=0 | numeroCartas>14 | numeroCartas<4){
         numeroCartas = prompt("Qual o número de cartas? Número par de 4 a 14");
@@ -39,7 +39,7 @@ function adicionarCartas(){
             <div class="carta-frente">
                 <img src=${cartas[i]} alt="Parrot da carta virada">
             </div>
-            <div class="carta-verso virado">
+            <div class="carta-verso">
                 <img src="imgs/front.png" alt="Parrot atrás da carta">
             </div>
         </div>
@@ -49,43 +49,45 @@ function adicionarCartas(){
 }
 
 function virarCarta(element){
-    
-    inverterCarta(element);
 
-    let cartasSelecionadas = document.querySelectorAll(".carta-frente.virado").length
+    if(element.querySelector(".carta-acertada") == undefined){
 
-    if( cartasSelecionadas == 2){
-        if(element.innerHTML == cartaAnterior.innerHTML){
-            const deixarVirada = element.querySelector(".carta-frente");
-            const deixarViradaAntiga = cartaAnterior.querySelector(".carta-frente");
-            deixarVirada.classList.add("virado-permanente");
-            deixarViradaAntiga.classList.add("virado-permanente");
-            deixarVirada.classList.remove("virado");
-            deixarViradaAntiga.classList.remove("virado");
-        }else{
-            // adicionar o tempo aqui
-            inverterCarta(element);
-            inverterCarta(cartaAnterior);
+        virarCima(element);
+
+        const cartasViradas = document.querySelectorAll(".carta-frente.virado");
+
+        if(cartasViradas.length == 2){
+            if(cartasViradas[0].innerHTML == cartasViradas[1].innerHTML){
+                cartasViradas[0].classList.add("carta-acertada");
+                cartasViradas[1].classList.add("carta-acertada");
+                cartasViradas[0].classList.remove("virado");
+                cartasViradas[1].classList.remove("virado");
+                acertos++;
+            }else{
+                virarBaixo(cartasViradas[0].parentNode);
+                virarBaixo(cartasViradas[1].parentNode);
+            }
         }
-        cartaAnterior=0;
+
+        console.log(acertos);
     }
+}
 
+function virarBaixo(element){
 
-    cartaAnterior = element;
+    const cartaFrente = element.querySelector(".carta-frente");
+    const cartaVerso = element.querySelector(".carta-verso");
+    cartaFrente.style.transform = "rotateY(180deg)";
+    cartaFrente.classList.remove("virado");
+    cartaVerso.style.transform = "rotateY(0deg)";
 
 }
 
-function esperarVirar(primeira,segunda){
-    
-}
-function inverterCarta(element){
+function virarCima(element){
 
-    // if para não inverter as já "acertadas"
-    if (element.querySelector(".virado-permanente") == undefined){
-        const cartaFrente = element.querySelector(".carta-frente");
-        const cartaVerso = element.querySelector(".carta-verso");
-        cartaFrente.classList.toggle("virado");
-        cartaVerso.classList.toggle("virado");
-    }
-
+    const cartaFrente = element.querySelector(".carta-frente");
+    const cartaVerso = element.querySelector(".carta-verso");
+    cartaFrente.style.transform = "rotateY(0deg)";
+    cartaFrente.classList.add("virado");
+    cartaVerso.style.transform = "rotateY(-180deg)";
 }

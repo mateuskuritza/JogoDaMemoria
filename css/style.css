@@ -17,32 +17,45 @@ h1{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+.carta-selecionada{
+    position: relative;
+    width: 117px;
+    height: 146px;
+    margin: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .carta-verso, .carta-frente{
     width: 117px;
     height: 146px;
-    background: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px;
+    background: #A7E9AF;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 34px;
-    display: none;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .7s;
+    transform-style: preserve-3d;
 }
-
-
 
 img{
     width: 100px;
 }
 
-.virado{
-    display: flex;
+/* efeito virar */
+
+.carta-verso{
+    transform: rotateY(0deg);
 }
 
-.virado-permanente{
-    display: flex;
-    z-index: 10;
+.carta-frente{
+    transform: rotateY(180deg);
 }
