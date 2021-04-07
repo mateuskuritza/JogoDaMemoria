@@ -7,7 +7,6 @@ function quantasCartas(){
     jogadas = 0;
     acertos = 0;
     numeroCartas = prompt("Qual o número de cartas? Número par de 4 a 14");
-    containerCartas.innerHTML= null;
     while(numeroCartas%2!=0 | numeroCartas>14 | numeroCartas<4){
         numeroCartas = prompt("Qual o número de cartas? Número par de 4 a 14");
     }
@@ -72,8 +71,12 @@ function virarCarta(element){
 
         if(acertos == numeroCartas){
             alert(`Você ganhou em ${jogadas} jogadas!`)
-            if(prompt("Quer jogar mais uma vez? Se quer, digite sim") == "sim"){
+            containerCartas.innerHTML= null;
+            const pergunta = prompt("Quer jogar mais uma vez? Se quer, digite sim")
+            if(pergunta == "sim"){
                 quantasCartas();
+            }else{
+                alert("Até a próxima!");
             }
         }
     }
