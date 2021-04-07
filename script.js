@@ -35,14 +35,14 @@ function adicionarCartas(){
     for(let i=0; i<cartas.length; i++){
 
         containerCartas.innerHTML+=`
-        <div class="carta-selecionada" onclick="virarCarta(this);">
-            <div class="carta-frente">
+        <ul class="carta-selecionada" onclick="virarCarta(this);">
+            <li class="carta-frente">
                 <img src=${cartas[i]} alt="Parrot da carta virada">
-            </div>
-            <div class="carta-verso">
+            </li>
+            <li class="carta-verso">
                 <img src="imgs/front.png" alt="Parrot atrás da carta">
-            </div>
-        </div>
+            </li>
+        </ul>
         `
     }
     
