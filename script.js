@@ -48,8 +48,8 @@ function adicionarCartas(){
     
 }
 
-function virarCarta(element){
 
+function virarCarta(element){
     if(element.querySelector(".carta-acertada") == undefined){
         jogadas++;
         virarCima(element);
@@ -64,12 +64,13 @@ function virarCarta(element){
                 }
                 acertos+=2;
             }else{
-                // aqui precisa esperar
-                for(let i=0; i<2; i++){
-                    virarBaixo(cartasViradas[i].parentNode);
-                }
+                setTimeout(function(){
+                    for(let i=0; i<2; i++){
+                        virarBaixo(cartasViradas[i].parentNode);
+                    }
+                }, 1000);
+                
             }
-            
         }
 
         if(acertos == numeroCartas){
