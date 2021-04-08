@@ -93,6 +93,9 @@ function virarCarta(element){
                 quantasCartas();
             }else{
                 containerCartas.innerHTML= null;
+                segundosPassados = 0;
+                cronometro.innerHTML = segundosPassados;
+                clearInterval(IdInterval);
                 setTimeout(alert, 50, "Até a próxima!");
             }
         }
