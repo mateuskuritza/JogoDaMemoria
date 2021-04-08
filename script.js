@@ -1,19 +1,13 @@
 const srcImgs = ["imgs/bobrossparrot.gif","imgs/explodyparrot.gif","imgs/fiestaparrot.gif","imgs/metalparrot.gif","imgs/revertitparrot.gif","imgs/tripletsparrot.gif","imgs/unicornparrot.gif"];
 const containerCartas = document.querySelector(".container-cartas");
 const cronometro = document.querySelector(".cronometro");
-cartaVirando = false;
-parou = 1;
+let cartaVirando = false;
+let IdInterval=0;
 quantasCartas();
-iniciarCronometro();
-
 
 function iniciarCronometro(){
-    setInterval( ()=> {
-        if(acertos!==numeroCartas){
-            cronometro.innerHTML = segundosPassados*parou;
-            segundosPassados++;
-        }
-    },1000);
+    segundosPassados++;
+    cronometro.innerHTML = segundosPassados;
 }
 
 function quantasCartas(){
@@ -21,10 +15,15 @@ function quantasCartas(){
     jogadas = 0;
     acertos = 0;
     segundosPassados = 0;
+    cronometro.innerHTML = segundosPassados;
+    clearInterval(IdInterval);
+    
     numeroCartas = prompt("Qual o número de cartas? Número par de 4 a 14");
     while(numeroCartas%2!=0 | numeroCartas>14 | numeroCartas<4){
         numeroCartas = prompt("Qual o número de cartas? Número par de 4 a 14");
     }
+
+    IdInterval = setInterval(iniciarCronometro ,1000);
     pegarBaralho(numeroCartas);
 }
 
@@ -88,14 +87,13 @@ function virarCarta(element){
         }
 
         if(acertos == numeroCartas){
-            alert(`Você ganhou em ${jogadas} jogadas com ${segundosPassados-1} segundos!`);
+            alert(`Você ganhou em ${jogadas} jogadas com ${segundosPassados} segundos!`);
             const pergunta = prompt("Quer jogar mais uma vez? Se quer, digite sim");
             if(pergunta == "sim"){
                 quantasCartas();
             }else{
                 containerCartas.innerHTML= null;
-                alert("Até a próxima!");
-                parou = 0;
+                setTimeout(alert, 50, "Até a próxima!");
             }
         }
 
