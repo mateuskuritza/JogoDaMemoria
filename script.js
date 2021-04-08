@@ -17,6 +17,7 @@ function iniciarCronometro(){
 }
 
 function quantasCartas(){
+    containerCartas.innerHTML= null;
     jogadas = 0;
     acertos = 0;
     segundosPassados = 0;
@@ -88,11 +89,11 @@ function virarCarta(element){
 
         if(acertos == numeroCartas){
             alert(`Você ganhou em ${jogadas} jogadas com ${segundosPassados-1} segundos!`);
-            containerCartas.innerHTML= null;
             const pergunta = prompt("Quer jogar mais uma vez? Se quer, digite sim");
             if(pergunta == "sim"){
                 quantasCartas();
             }else{
+                containerCartas.innerHTML= null;
                 alert("Até a próxima!");
                 parou = 0;
             }

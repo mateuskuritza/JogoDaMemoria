@@ -66,3 +66,21 @@ img{
     justify-content: space-around;
     border-bottom: 1px solid #99CEA8;
 }
+
+
+
+button[type=reset]{
+    outline: none;
+    font-size: 20px;
+    color: #EEF9BF;
+    margin-top: 40px;
+    text-align: center;
+    background: #75B79E;
+    border: none;
+    transition: .4s;
+    cursor: pointer;
+}
+
+button[type=reset]:hover{
+    border: 1px solid black;
+}
