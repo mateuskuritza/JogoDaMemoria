@@ -64,12 +64,13 @@ function adicionarCartas(){
 
 function virarCarta(element){
     if(element.querySelector(".carta-acertada") == undefined && cartaVirando == false){
+        cartaVirando = true;
         jogadas++;
         virarCima(element);
-        cartaVirando = true;
 
         const cartasViradas = document.querySelectorAll(".carta-frente.virado");
 
+        // conferir se são iguais
         if(cartasViradas.length == 2){
             if(cartasViradas[0].innerHTML == cartasViradas[1].innerHTML){
                 for(let i=0; i<2; i++){
@@ -87,22 +88,26 @@ function virarCarta(element){
         }
 
         if(acertos == numeroCartas){
-            alert(`Você ganhou em ${jogadas} jogadas com ${segundosPassados} segundos!`);
-            const pergunta = prompt("Quer jogar mais uma vez? Se quer, digite sim");
-            if(pergunta == "sim"){
-                quantasCartas();
-            }else{
-                containerCartas.innerHTML= null;
-                segundosPassados = 0;
-                cronometro.innerHTML = segundosPassados;
-                clearInterval(IdInterval);
-                setTimeout(alert, 50, "Até a próxima!");
-            }
+            setTimeout(acertouTodas,50);
         }
 
         // esperar a carta terminar de virar antes de poder virar outra
         setTimeout(() => { cartaVirando = false;},1000);
 
+    }
+}
+
+function acertouTodas(){
+    alert(`Você ganhou em ${jogadas} jogadas com ${segundosPassados} segundos!`);
+    const pergunta = prompt("Quer jogar mais uma vez? Se quer, digite sim");
+    if(pergunta.toLowerCase() == "sim"){
+        quantasCartas();
+    }else{
+        containerCartas.innerHTML= null;
+        segundosPassados = 0;
+        cronometro.innerHTML = segundosPassados;
+        clearInterval(IdInterval);
+        setTimeout(alert, 50, "Até a próxima!");
     }
 }
 
