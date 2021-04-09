@@ -8,7 +8,7 @@ body{
     justify-content: space-around;
     border-bottom: 1px solid #99CEA8;
     margin-top: 40px;
-    padding-bottom: 20px;
+    padding: 0 15px 20px 15px;
 }
 h1,strong{
     font-weight: 700;
@@ -26,6 +26,7 @@ button[type=reset]{
     border: none;
     transition: .4s;
     cursor: pointer;
+    margin: 0 30px;
 }
 button[type=reset]:hover{
     border: 1px solid black;
