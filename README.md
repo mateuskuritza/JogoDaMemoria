@@ -10,7 +10,7 @@ Acesse a página clicando **<a href="https://mateuskuritza.github.io/Projeto4_Jo
 
 ​																									Preview do jogo
 
-![image-20210409121016295](C:\Users\mateu\AppData\Roaming\Typora\typora-user-images\image-20210409121016295.png)
+![image-20210409121016295](imgs/parrotsGameImg.png)
 
 
 
