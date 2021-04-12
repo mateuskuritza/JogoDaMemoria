@@ -126,3 +126,13 @@ function conferirPar(){
         }, 1000);
     }
 }
+
+// dark theme
+const botaoTema = document.querySelectorAll("alterar-tema");
+function alterarTema(){
+    const tudo = document.querySelector("body");
+    tudo.classList.toggle("dark-theme");
+
+    botaoTema[0].classList.toggle("none");
+    botaoTema[1].classList.toggle("none");
+}

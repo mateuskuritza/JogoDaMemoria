@@ -1,5 +1,5 @@
 body{
-    background: #EEF9BF;
+    background: var(--background-color);
     font-family: 'Roboto', sans-serif;
 }
 .barra-topo{
@@ -13,24 +13,25 @@ body{
 h1,strong{
     font-weight: 700;
     font-size: 56px;
-    color: #75B79E;
+    color: var(--text-color);
     text-align: center;
     cursor:default;
 }
 button[type=reset]{
     outline: none;
     font-size: 25px;
-    color: #EEF9BF;
+    color: var(--background-color);
     text-align: center;
-    background: #75B79E;
+    background: var(--text-color);
     border: none;
+    border-radius: 4px;
     transition: .4s;
     cursor: pointer;
     margin: 0 30px;
 }
 button[type=reset]:hover{
     border: 1px solid black;
-    box-shadow: 0px 0px 2px 2px rgba(20, 20, 20, 1);
+    box-shadow: 0px 0px 2px 2px var(--button-shadow);
 }
 .container-cartas{
     margin: 13px auto 0 auto;
@@ -80,4 +81,27 @@ img{
 }
 .carta-frente{
     transform: rotateY(180deg);
+}
+
+/* dark theme */
+
+.dark-theme{
+    --text-color: #cac35d;
+    --background-color: #104421;
+    --button-shadow: white;
+}
+
+:root{
+    --text-color: #75B79E;
+    --background-color: #EEF9BF;
+    --button-shadow: rgba(20, 20, 20, 1);
+}
+
+.alterar-tema{
+    font-size: 60px;
+    color: #75B79E;
+}
+
+.none{
+    display:none;
 }
