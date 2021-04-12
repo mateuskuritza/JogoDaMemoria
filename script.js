@@ -133,6 +133,8 @@ function alterarTema(){
     const tudo = document.querySelector("body");
     tudo.classList.toggle("dark-theme");
 
-    botaoTema[0].classList.toggle("none");
-    botaoTema[1].classList.toggle("none");
+    for(let i = 0; i<botaoTema.length; i++){
+        botaoTema[i].classList.toggle("none");
+    }
+    
 }
