@@ -2,7 +2,7 @@ const srcImgs = ["imgs/bobrossparrot.gif","imgs/explodyparrot.gif","imgs/fiestap
 const containerCartas = document.querySelector(".container-cartas");
 const cronometro = document.querySelector(".cronometro");
 let cartaVirando = false;
-let IdInterval=0;
+let idInterval=0;
 let cartas = [];
 let cartasViradas = document.querySelectorAll(".carta-frente.virado");
 
@@ -17,11 +17,11 @@ function quantasCartas(){
     resetarValores();
     
     numeroCartas = parseInt(prompt("Qual o número de cartas? Número par de 4 a 14"));
-    while(numeroCartas%2!==0 | numeroCartas>14 | numeroCartas<4){
+    while(numeroCartas%2 !== 0 || numeroCartas > 14 || numeroCartas < 4){
         numeroCartas = prompt("Qual o número de cartas? Número par de 4 a 14");
     }
 
-    IdInterval = setInterval(contadorCronometro ,1000);
+    idInterval = setInterval(contadorCronometro ,1000);
     pegarBaralho(numeroCartas);
 }
 
@@ -40,7 +40,7 @@ function pegarBaralho(numerodecartas){
 function adicionarCartas(){
     for(let i=0; i<cartas.length; i++){
         containerCartas.innerHTML+=`
-        <ul class="carta-selecionada" onclick="virarCarta(this);">
+        <ul class="carta-selecionada" onclick="jogo(this);">
             <li class="carta-frente">
                 <img src=${cartas[i]} alt="Parrot da carta virada">
             </li>
@@ -53,11 +53,11 @@ function adicionarCartas(){
 }
 
 
-function virarCarta(element){
+function jogo(element){
     if(element.querySelector(".carta-acertada") == undefined && cartaVirando === false){
         cartaVirando = true;
         jogadas++;
-        virarCima(element);
+        virarCarta(element,"cima");
 
         cartasViradas = document.querySelectorAll(".carta-frente.virado");
 
@@ -85,20 +85,22 @@ function acertouTodas(){
     }
 }
 
-function virarBaixo(element){
-    const cartaFrente = element.querySelector(".carta-frente");
-    const cartaVerso = element.querySelector(".carta-verso");
-    cartaFrente.style.transform = "rotateY(180deg)";
-    cartaFrente.classList.remove("virado");
-    cartaVerso.style.transform = "rotateY(0deg)";
-}
+function virarCarta(element,sentido){
 
-function virarCima(element){
     const cartaFrente = element.querySelector(".carta-frente");
     const cartaVerso = element.querySelector(".carta-verso");
+
+    if(sentido === "cima"){
     cartaFrente.style.transform = "rotateY(0deg)";
     cartaFrente.classList.add("virado");
     cartaVerso.style.transform = "rotateY(-180deg)";
+    }
+
+    if(sentido === "baixo"){
+        cartaFrente.style.transform = "rotateY(180deg)";
+        cartaFrente.classList.remove("virado");
+        cartaVerso.style.transform = "rotateY(0deg)";
+    }
 }
 
 function resetarValores(){
@@ -108,7 +110,7 @@ function resetarValores(){
     acertos = 0;
     segundosPassados = 0;
     cronometro.innerHTML = segundosPassados;
-    clearInterval(IdInterval);
+    clearInterval(idInterval);
 }
 
 function conferirPar(){
@@ -121,7 +123,7 @@ function conferirPar(){
     }else{
         setTimeout(function(){
             for(let i=0; i<2; i++){
-                virarBaixo(cartasViradas[i].parentNode);
+                virarCarta(cartasViradas[i].parentNode,"baixo");
             }
         }, 1000);
     }
