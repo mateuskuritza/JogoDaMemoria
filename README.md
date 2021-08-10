@@ -30,3 +30,9 @@ Acesse a página clicando **<a href="https://mateuskuritza.github.io/Projeto4_Jo
 > Para a organização do layout: <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Flex-Box</a>
 
 > Conhecimentos úteis do JavaScript: <a href="https://www.w3schools.com/jsref/met_document_queryselector.asp">.querySelector</a>, <a href="https://www.w3schools.com/js/js_this.asp">this</a>, <a href="https://www.w3schools.com/jsref/met_win_settimeout.asp">setTimeout()</a>, <a href="https://www.w3schools.com/jsref/met_win_setinterval.asp">setInterval()</a> e <a href="https://www.w3schools.com/jsref/jsref_sort.asp">.sort()</a>
+
+
+### Instruções de uso:
+
+  1. Clone esse repositório
+  2. Execute o arquivo index.html
