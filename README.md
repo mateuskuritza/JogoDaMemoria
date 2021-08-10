@@ -1,9 +1,6 @@
 #    :black_joker: Jogo da memória de papagaios muito loucos :bird:
 
-> Página desenvolvida utilizando **CSS**, **HTML** e **JavaScript**. 
-
-> O projeto faz parte do bootcamp "Desenvolvimento Web Full-Stack" do **Responde Aí**
-
+> Página desenvolvida utilizando **CSS**, **HTML** e **JavaScript vanilla**. 
 
 
 Acesse a página clicando **<a href="https://mateuskuritza.github.io/Projeto4_JogoDaMemoria/">AQUI</a>**
